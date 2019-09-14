@@ -229,6 +229,11 @@ if(empty($_SESSION['order'])&&empty($_SESSION['inclusion'])){
 
 						$Total = 0;
 						$TotalOrder = "";
+
+						foreach ($_SESSION['order'] as $item) {
+							$itemCount++;
+						}
+
 								foreach($_SESSION['order'] AS $order){
 									$sql = "SELECT * FROM product WHERE ProductID = '" . $order . "'";
 
@@ -237,6 +242,11 @@ if(empty($_SESSION['order'])&&empty($_SESSION['inclusion'])){
 					                    if($result->num_rows > 0)
 							            {                   
 							                while($row = $result->fetch_assoc()){ 	
+												
+											if ($itemCount >= 5) {
+												$priceDiscount = 0.10;
+												$discount = ($Total + $row['Price']) * $priceDiscount;
+											}
 
 							                $Total = $Total + $row['Price'];
 							                $TotalOrder = $TotalOrder . $row['Name'].", ";
@@ -250,8 +260,8 @@ if(empty($_SESSION['order'])&&empty($_SESSION['inclusion'])){
 									<span>Subtotal</span> <span>P<?php echo $Total; ?>.00</span>
 									<textarea class="form-control" name="ItemsTxt" readonly><?php echo $TotalOrder; ?></textarea>
 								</li>
-								<li><span>Shipping</span> <span>P100.00</span></li>
-								<li><span  name="">Order Total</span> <input type="text" name="TotalTxt" class="form-control" value="<?php echo $Total + 100; ?>" readonly> </li>
+								<li><span>Shipping</span> <span>P200.00</span></li>
+								<li><span  name="">Order Total</span> <input type="text" name="TotalTxt" class="form-control" value="<?php echo ($Total + 200) - $discount; ?>" readonly> </li>
 							</ul>
 						</div>
 						<div class="cart-detail">

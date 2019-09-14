@@ -162,6 +162,12 @@ if(empty($_SESSION['order'])&&empty($_SESSION['inclusion'])){
 						include("SQL.php");
 
 						$Total = 0;
+						$itemCount = 0;
+
+						foreach ($_SESSION['order'] as $item) {
+							$itemCount++;
+						}
+
 								foreach($_SESSION['order'] AS $order){
 									$sql = "SELECT * FROM product WHERE ProductID = '" . $order . "'";
 
@@ -169,9 +175,14 @@ if(empty($_SESSION['order'])&&empty($_SESSION['inclusion'])){
 
 					                    if($result->num_rows > 0)
 							            {                   
-							                while($row = $result->fetch_assoc()){ 	
+							                while($row = $result->fetch_assoc()){
+									
 
-							                $Total = $Total + $row['Price'];
+											if ($itemCount >= 5) {
+												$priceDiscount = 0.10;
+												$discount = ($Total + $row['Price']) * $priceDiscount;
+											}
+							                $Total = ($Total + $row['Price']);
 							                ?>
 
 							                
@@ -216,10 +227,25 @@ if(empty($_SESSION['order'])&&empty($_SESSION['inclusion'])){
 										<div class="sub">
 											<p><span>Subtotal:</span> <span>P<?php echo $Total; ?>.00</span></p>
 											<p><span>Delivery:</span> <span>P200.00</span></p>
-											<p><span>Discount:</span> <span>P0.00</span></p>
+											<p><span>Total Items:</span> <span><?php echo $itemCount ?></span></p>
+											<p><span>Discount:</span> <span><?php echo 'P' + $discount; ?></span></p>
+
+
 										</div>
 										<div class="grand-total">
-											<p><span><strong>Total:</strong></span> <span>P<?php echo $Total+200; ?>.00</span></p>
+											<p><span><strong>Total:</strong></span> 
+										
+												<span>
+													P<?php
+													// if (5 <= $itemCount) {
+													// 	echo ($Total+200) - $discount; 
+													// } else {
+													// 	echo ($Total+200);
+													// }
+													echo ($Total + 200) - $discount;
+													?>
+												</span>
+											</p>
 										</div>
 
 

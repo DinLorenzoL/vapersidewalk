@@ -185,7 +185,15 @@ $GetID = $_GET['GetOrderID'];
 
                                                 <div class="col-md-6">
                                                     <label>Update Order</label>
-                                                    <textarea class="form-control" name="UpdateMe"><?php echo $OrderStatus; ?></textarea>
+                                                    <!-- <textarea class="form-control" name="UpdateMe"><?php echo $OrderStatus; ?></textarea> -->
+
+                                                    <select class="form-control" name="UpdateMe">
+        <option value="Approved" <?php if ($OrderStatus === "Approved") echo 'selected'; ?>>Approved</option>
+        <option value="Delivery" <?php if ($OrderStatus === "Delivery") echo 'selected'; ?>>Delivery</option>
+        <option value="Recieved" <?php if ($OrderStatus === "Recieved") echo 'selected'; ?>>Recieved</option>
+        <option value="Cancelled" <?php if ($OrderStatus === "Cancelled") echo 'selected'; ?>>Cancelled</option>
+      </select>
+                                                
                                                 </div>
 
                                                 <input type="hidden" name="GetID2" value="<?php echo $GetID; ?>">
