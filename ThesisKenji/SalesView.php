@@ -19,7 +19,7 @@ else{
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>VaperSidewalk</title>
+    <title>Sufee Admin - HTML5 Admin Template</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -328,13 +328,13 @@ else{
                                         </div>
 
                                         <div class="col-md-2">
-                                            <label>Generate Monthly</label>
-                                            <button type="submit" class="btn btn-block btn-success" name="FilterMonth">Monthly</button>
+                                            <label>Year</label>
+                                            <button type="submit" class="btn btn-block btn-success" name="FilterMonth">Generate Report (Monthly)</button>
                                         </div>
 
                                         <div class="col-md-2">
-                                            <label>Generate Yearly</label>
-                                            <button type="submit" class="btn btn-block btn-info" name="FilterYear">Yearly</button>
+                                            <label>Year</label>
+                                            <button type="submit" class="btn btn-block btn-info" name="FilterYear">Generate Report (Year)</button>
                                         </div>
 
 
@@ -373,29 +373,13 @@ else{
                            
 </body>
 </html>
-<!-- print sales -->
- <script type"text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script type"text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script type"text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
-<script type"text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.flash.min.js"></script>
-<script type"text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script type"text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-<script type"text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-<script type"text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js"></script>
-<script type"text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
-
+        
 
 <script>
   var loadFile1 = function(event) {
     var preview = document.getElementById('preview');
     preview.src = URL.createObjectURL(event.target.files[0]);
   };
-   $(document).ready(function() {
-    $('#bootstrap-data-table-export').DataTable( {
-        dom: 'Bfrtip',
-        buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
-    } );
-} );
 </script>
 
 
